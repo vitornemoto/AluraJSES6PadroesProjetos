@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/app/models/exercicio/Calopsita.js"></script>
+    <script src="./js/app/models/exercicio/Pessoa.js"></script>
+    <script src="./js/app/models/exercicio/Conta.js"></script>
+    <script src="./js/app/models/exercicio/spreadoperator.js"></script>
+    <script src="./js/app/models/exercicio/spreadoperator2.js"></script>
+    <script src="./js/app/models/exercicio/map.js"></script>
+    <script src="./js/app/models/exercicio/Aluno.js"></script>
+    <script src="./js/app/models/exercicio/Prova.js"></script>
+    <script src="./js/app/models/exercicio/Codigo.js"></script>
+    <script>
+        let calopsita = new Calopsita('Daroti', 'Arretada do agreste');
+        console.log(calopsita);
+
+        let pessoa = new Pessoa('Flávio', 'Almeida');
+        console.log(pessoa.obtemNomeCompleto());
+
+
+        let conta = new Conta('Mingal', 171);
+        console.log(conta.saldo);
+        conta.deposita(100);
+        console.log(conta.titular);
+        console.log(conta.conta);
+        console.log(conta.saldo);
+
+
+        let avaliacoes  = [
+            new Prova(new Aluno(1, 'Luana'),8),
+            new Prova(new Aluno(2, 'Cássio'),6),
+            new Prova(new Aluno(3, 'Barney'),9),
+            new Prova(new Aluno(4, 'Bira'),5)
+        ]
+
+        let aprovados = avaliacoes
+            .filter(prova => prova.nota >= 7 )
+            .map( prova => prova.aluno.nome);
+
+        console.log(aprovados);
+
+        console.log(Codigo.validaCodigo('GWZ-JJ-12'));
+        console.log(Codigo.validaCodigo('1X1-JJ-12'));
+
+
+
+        function exibeNoConsole(lista){
+            lista.forEach(item => console.log(item));
+        }
+
+        let listaDeNomes1 = ['Flávio', 'Rogers', 'Júlia'];
+        let listaDeNomes2 = ['Vieira', 'Fernanda', 'Gerson'];
+
+        exibeNoConsole(listaDeNomes1.concat(listaDeNomes2));
+
+    </script>
+
+</body>
+</html>
